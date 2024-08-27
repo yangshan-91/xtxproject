@@ -5,6 +5,7 @@
  */
 
 import  httpInstance  from '@/utils/http'
+
 export function getBannerAPI (params = {}) {
   // 默认为1 商品为2
   const { distributionSite = '1' } = params

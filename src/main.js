@@ -12,6 +12,8 @@ import router from './router'
 import {LazyPlugin } from '@/directives'
 const app = createApp(App)
 
+//引入全局组件插件
+import { componentPlugin } from '@/components'
 app.use(createPinia())
 app.use(router)
 app.use(LazyPlugin)
@@ -19,6 +21,6 @@ app.use(LazyPlugin)
 app.use(ElementPlus);
 app.mount('#app')
  
-
+app.use(componentPlugin)
 
 

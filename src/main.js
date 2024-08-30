@@ -7,7 +7,7 @@ import ElementPlus from 'element-plus';
 
 import App from './App.vue'
 import router from './router'
-
+import 'element-plus/dist/index.css'
 //引入懒加载指令插件并且注册
 import {LazyPlugin } from '@/directives'
 const app = createApp(App)

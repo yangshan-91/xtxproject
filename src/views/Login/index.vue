@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 // 表单数据对象
-const form = ref({
+const userInfo = ref({
   account: '1311111111',
   password: '123456',
   agree: true
@@ -19,7 +19,15 @@ const rules = {
   agree: [
     {
       validator: (rule, val, callback) => {
-        return val ? callback() : new Error('请先同意协议')
+        console.log(val)
+        if(val){
+          callback()
+        }
+
+        else{
+          callback(new Error('请先勾选协议')) 
+        }
+
       }
     }
   ]
@@ -49,16 +57,16 @@ const rules = {
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form :model="form" :rules="rules" label-position="right" label-width="60px"
+            <el-form :model="userInfo" :rules="rules" label-position="right" label-width="60px"
               status-icon>
               <el-form-item prop="account" label="账户">
-                <el-input v-model="form.account"/>
+                <el-input v-model="userInfo.account"/>
               </el-form-item>
               <el-form-item prop="password" label="密码">
-                <el-input v-model="form.password"/>
+                <el-input v-model="userInfo.password"/>
               </el-form-item>
-              <el-form-item label-width="22px">
-                <el-checkbox  size="large">
+              <el-form-item prop="agree" label-width="22px">
+                <el-checkbox  size="large" v-model="userInfo.agree">
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>
